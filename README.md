@@ -18,3 +18,5 @@ Return a JSON response, free & well-documented
 
 ## Delegate issues/tasks for next time?
 Research IMDB to get titles and use watchnode for IDs 
+## API ID between the two
+imdb_id
