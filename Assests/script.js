@@ -22,3 +22,19 @@ function searchAPI() {
 };
 
 searchAPI();
+
+//function to display search results
+function displayResults(){
+
+};
+
+//movie that user chooses 
+function userMovieChoice(){
+
+};
+//query search btn as var
+function searchBtn(){
+
+};
+//event listener for clicking searchbtn
+

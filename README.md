@@ -20,3 +20,8 @@ Return a JSON response, free & well-documented
 Research IMDB to get titles and use watchnode for IDs 
 ## API ID between the two
 imdb_id
+
+
+
+## MVP
+- input, search button, results for movie search and tiny bit of flare
