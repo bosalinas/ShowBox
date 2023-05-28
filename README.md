@@ -25,3 +25,16 @@ imdb_id
 
 ## MVP
 - input, search button, results for movie search and tiny bit of flare
+
+
+##About APIs
+
+TMDB:
+Movie ID --- imdb_id
+
+WatchMode:
+Title --- title
+Poster --- poster
+release date --- release_date
+movie recs --- similar_titles
+sources - sources.web_url
