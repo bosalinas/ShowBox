@@ -1,3 +1,5 @@
+var searchButton = document.querySelector(".searchButton")
+
 //function to find all data for both APIs
 function searchAPI() {
     var tmdbUrl = "https://api.themoviedb.org/3/movie/343611?api_key=0d6d6b4bebecbfdfd42593dcd6f307e6"
@@ -30,11 +32,20 @@ function displayResults(){
 
 //movie that user chooses 
 function userMovieChoice(){
+    
 
 };
-//query search btn as var
-function searchBtn(){
+//search button event listener and function - DONE
+function searchBtn(event){
+    event.preventDefault();
 
+    var movieSearched = document.querySelector(".search-input").value;
+
+    if (!searchInputVal) {
+        console.error('You need a search input value!');
+        return;
+    }
+    userMovieChoice(movieSearched);
 };
-//event listener for clicking searchbtn
+searchButton.addEventListener("click",searchBtn);
 
