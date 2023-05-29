@@ -1,19 +1,34 @@
 
 /* CONTAINER COLOR TESTSSS */
 body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;  
     background-color: rgb(252, 212, 77);
+    /* background-color: floralwhite; */
+    border: 1px solid;
+    border-radius: 10px;
+    
+  
 }
+
 
 #grid-container {
     background-color: rgb(253, 145, 176);
 }
 
-.searchContainer {
+/* body {
     background-color: floralwhite;
     border: 1px solid;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;  
+  
+} */
+
+button round{
+    border-radius: 50%;
 }

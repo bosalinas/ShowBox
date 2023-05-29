@@ -12,7 +12,7 @@ function searchAPI() {
     }).then(function (data) {
         console.log("tmdbapi:", data)
         var tmdbApiId = data.imdb_id;
-  
+
         var watchmodeApiUrl = `https://api.watchmode.com/v1/title/${tmdbApiId}/details/?apiKey=hr9u8TGmWHKemrBe5k1uVAYuLpindRYF8el3C1jp&append_to_response=sources`
 
         fetch(watchmodeApiUrl).then(function (response) {
@@ -26,26 +26,43 @@ function searchAPI() {
 searchAPI();
 
 //function to display search results
-function displayResults(){
+function displayResults(data) {
+for (var i = 0; i < data.length; i++) {
+    var movieNameEl = document.querySelector('#movieName');
+    var posterEl = document.querySelector('#poster-image');
+    var whereToWatchEl = document.querySelector('#whereToWatch');
+    var dateEl = document.querySelector('#release-date');
 
+    movieNameEl.textContent = data[i].title;
+    posterEl.textContent = data[i].poster;
+    whereToWatchEl.textContent = data[i].sources.web_url;
+    dateEl.textContent = data[i].release_date;
+
+    console.log('title', movieNameEl);
+    console.log('poster', posterEl);
+    console.log('where to watch', whereToWatchEl);
+    console.log('date', dateEl);
+}
 };
+
 
 //movie that user chooses 
-function userMovieChoice(){
-    
+//function userMovieChoice() {
 
-};
+
+
+//};
 //search button event listener and function - DONE
-function searchBtn(event){
-    event.preventDefault();
+// function searchBtn(event) {
+//     event.preventDefault();
 
-    var movieSearched = document.querySelector(".search-input").value;
+//     var movieSearched = document.querySelector(".search-input").value;
 
-    if (!searchInputVal) {
-        console.error('You need a search input value!');
-        return;
-    }
-    userMovieChoice(movieSearched);
-};
-searchButton.addEventListener("click",searchBtn);
+//     if (!searchInputVal) {
+//         console.error('You need a search input value!');
+//         return;
+//     }
+//     userMovieChoice(movieSearched);
+// };
+// searchButton.addEventListener("click", searchBtn);
 
