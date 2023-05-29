@@ -8,3 +8,12 @@ body {
     background-color: rgb(253, 145, 176);
 }
 
+.searchContainer {
+    background-color: floralwhite;
+    border: 1px solid;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
