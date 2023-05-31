@@ -2487,10 +2487,12 @@ code, .code-inline {
     page-break-inside: auto; } }
 
 .button {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   vertical-align: middle;
   margin: 0 0 1rem 0;
   padding: 0.85em 1em;
+
   border: 1px solid;
   border-radius: 45px;
   -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
