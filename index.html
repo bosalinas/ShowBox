@@ -1,19 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./Assests/foundation.css">
     <link rel="stylesheet" href="./Assests/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;0,800;0,900;1,300;1,500&display=swap" rel="stylesheet">
+    
     <title>ShowBox - Movie Database</title>
+
 </head>
 
 <body>
-    <main>
-        Content
+
+    <!-- HEADER CONTENT -->
+    <!-- <div class="yass-container " id="grid-container"> -->
+        <div class="grid-x grid-padding-x" id="grid-container">
+            <div class="large-12 cell">
+            
+                    <h1 class="text-center" id="flixText"> YASS FLIX  </h1>
+                
+            </div>
+        </div>
+    <!-- </div> -->
+
+    <!-- SEARCH CONTENT -->
+    <div class="row text-center" id="searchContainer">
+        <h2>Search for a Movie</h2>
+
+            <!-- <div class="grid-x grid-padding-x"> -->
+            <div class="medium-centered columns ">
+                <form class="center-form "id="search-form">
+                    <p id="inputContainer">
+                        <input type="text" id="movieInput" name="inputContainer" placeholder="Enter Movie name" />
+                    </p> 
+                    <button class="button" id="searchButton">Search</button>
+                </form>
+            </div>
+        <!-- </div> -->
+
+    </div>
+
+    <!-- MOVIE SEARCH RESULTS -->
+    <main class="medium-centered columns " >
+        <div class="search-results" id="searchResults">
+            <h2 class="text-center" id="movieName"> Movie Name </h2>
+            
+            <div id="current-movie" class="current-movie">
+                <p class="text-center" id="poster-image">Poster</p>
+                <p class="text-center" id="release-date">Movie Date</p>
+                <p class="text-center" id="whereToWatch">Where to Watch</p>
+            </div>
+
+        </div>
     </main>
+
 </body>
 <script src="./Assests/script.js"></script>
-
 </html>

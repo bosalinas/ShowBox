@@ -31,20 +31,46 @@ function searchAPI(movie) {
 // searchAPI();
 
 //function to display search results
+
 // function displayResults(){
 
 // };
 
+function displayResults(data) {
+for (var i = 0; i < data.length; i++) {
+    var movieNameEl = document.querySelector('#movieName');
+    var posterEl = document.querySelector('#poster-image');
+    var whereToWatchEl = document.querySelector('#whereToWatch');
+    var dateEl = document.querySelector('#release-date');
+
+    movieNameEl.textContent = data[i].title;
+    posterEl.textContent = data[i].poster;
+    whereToWatchEl.textContent = data[i].sources.web_url;
+    dateEl.textContent = data[i].release_date;
+
+    console.log('title', movieNameEl);
+    console.log('poster', posterEl);
+    console.log('where to watch', whereToWatchEl);
+    console.log('date', dateEl);
+}
+};
+
+
 //movie that user chooses 
+
 function userMovieChoice(movie){
     console.log("movie: ", movie);
     var movieEntered = document.getElementById("movieInput").value;
     searchAPI(movieEntered);
 
-};
+
+
+
+//};
 //search button event listener and function - DONE
-function searchBtn(event){
-    event.preventDefault();
+// function searchBtn(event) {
+//     event.preventDefault();
+
 
     var movieSearched = document.getElementById("movieInput").value;
 
@@ -55,4 +81,15 @@ function searchBtn(event){
     userMovieChoice(movieSearched);
 };
 searchButton.addEventListener("click",searchBtn);
+
+//     var movieSearched = document.querySelector(".search-input").value;
+
+//     if (!searchInputVal) {
+//         console.error('You need a search input value!');
+//         return;
+//     }
+//     userMovieChoice(movieSearched);
+// };
+// searchButton.addEventListener("click", searchBtn);
+
 
