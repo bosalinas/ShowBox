@@ -1,34 +1,52 @@
-
+:root {
+    --background: rgb(243, 230, 216);
+    --header: rgb(235, 62, 62);
+}
 /* CONTAINER COLOR TESTSSS */
 body {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     flex-direction: column;  
-    background-color: rgb(252, 212, 77);
-    /* background-color: floralwhite; */
-    border: 1px solid;
+    background-color: var(--background);
     border-radius: 10px;
-    
-  
 }
 
 
 #grid-container {
-    background-color: rgb(253, 145, 176);
+    background-color: var(--header);
+    border-bottom: 2px solid #000000;
 }
 
-/* body {
-    background-color: floralwhite;
-    border: 1px solid;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
+#inputContainer {
+    display:flex;
+    justify-content: space-around;
+    margin: 0 20px 0 0;
+}
+
+h1 {
+    font-family: 'Work Sans', serif;
+    font-size: 4.5em; 
+    font-weight: bold ;
+    
+}
+
+h2 {
+    font-family: 'Work Sans', serif;
+    font-size: 2em; 
+    
+}
+
+p {
+    font-family: 'Work Sans', serif;
+    font-size: 1em; 
+    
+}
+
+.center-form {
     justify-content: center;
-    flex-direction: column;  
-  
-} */
-
-button round{
-    border-radius: 50%;
+    display: flex;
+    /* margin: 40px 50px; */
+    padding: 30px;
 }
+
