@@ -55,8 +55,8 @@ function searchAPI(movie) {
     }).then(function (data) {
         console.log("tmdbapi:", data)
         var tmdbApiId = data.imdb_id;
-  
-        var watchmodeApiUrl = `https://api.watchmode.com/v1/title/${tmdbApiId}/details/?apiKey=${watchmodeApiKey}}&append_to_response=sources`
+
+        var watchmodeApiUrl = `https://api.watchmode.com/v1/title/${tmdbApiId}/details/?apiKey=hr9u8TGmWHKemrBe5k1uVAYuLpindRYF8el3C1jp&append_to_response=sources`
 
         fetch(watchmodeApiUrl).then(function (response) {
             return response.json();
