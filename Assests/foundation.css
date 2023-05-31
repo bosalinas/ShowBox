@@ -2492,8 +2492,9 @@ code, .code-inline {
   vertical-align: middle;
   margin: 0 0 1rem 0;
   padding: 0.85em 1em;
-  border: 1px solid transparent;
-  border-radius: 8px;
+
+  border: 1px solid;
+  border-radius: 45px;
   -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
   transition: background-color 0.25s ease-out, color 0.25s ease-out;
   font-family: inherit;
@@ -2516,11 +2517,11 @@ code, .code-inline {
     margin-right: 0;
     margin-left: 0; }
   .button, .button.disabled, .button[disabled], .button.disabled:hover, .button[disabled]:hover, .button.disabled:focus, .button[disabled]:focus {
-    background-color: #1779ba;
-    color: #fefefe; }
+    background-color: #c2269600;
+    color: #000000; }
   .button:hover, .button:focus {
-    background-color: #14679e;
-    color: #fefefe; }
+    background-color: var(--header);
+    color: #000000; }
   .button.primary, .button.primary.disabled, .button.primary[disabled], .button.primary.disabled:hover, .button.primary[disabled]:hover, .button.primary.disabled:focus, .button.primary[disabled]:focus {
     background-color: #1779ba;
     color: #fefefe; }
@@ -2627,7 +2628,7 @@ code, .code-inline {
     border-width: 0.4em;
     content: '';
     border-bottom-width: 0;
-    border-color: #fefefe transparent transparent;
+    border-color: #fefefe00 transparent transparent;
     position: relative;
     top: 0.4em;
     display: inline-block;
