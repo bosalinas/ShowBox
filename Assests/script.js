@@ -17,6 +17,9 @@ var searchButton = document.getElementById("searchButton")
 var tmdbApiKey = "0d6d6b4bebecbfdfd42593dcd6f307e6"
 var watchmodeApiKey = "Pmd5eUDJou34DMGyeaDChDeFLhOJHRxVt1MfzboM"
 
+//emily
+var searchHistory = [];
+
 //function to find all data for both APIs
 // function searchAPI() {
 //     var tmdbUrl = "https://api.themoviedb.org/3/movie/343611?api_key=0d6d6b4bebecbfdfd42593dcd6f307e6"
@@ -76,6 +79,19 @@ function displayResults(data) {
 
     var movieSearched = document.getElementById("movieInput").value;
 
+    if (!movieSearched) {
+        console.error('You need a search input value!');
+        return;
+    }
+    userMovieChoice(movieSearched);
+
+    // emily 5/31
+    if (movieSearched) {
+        searchHistory.push(movieSearched);
+        savedata();
+    }
+
+
     //search button event listener and function - DONE
 
     function searchBtn(event) {
@@ -110,4 +126,14 @@ function displayResults(data) {
     searchButton.addEventListener("click", searchBtn);
 
 
+//function to save movie to local storage- emily 5/31
+
+function savedata() {
+    localStorage.setItem(movieInput, JSON.stringify(searchHistory));
+    console.log(savedata);
+};
+  
+  
+
 }
+
