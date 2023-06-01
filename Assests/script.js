@@ -30,6 +30,8 @@ var watchmodeApiKey = "Pmd5eUDJou34DMGyeaDChDeFLhOJHRxVt1MfzboM"
 //         console.log("tmdbapi:", data)
 //         var tmdbApiId = data.imdb_id;
 
+// searchAPI();
+
 function displayResults(data) {
 
     //variables from index sheet - where data is gonna display
@@ -70,6 +72,9 @@ function displayResults(data) {
     };
 
 
+
+
+    var movieSearched = document.getElementById("movieInput").value;
 
     //search button event listener and function - DONE
 
