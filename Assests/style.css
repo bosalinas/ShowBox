@@ -9,13 +9,14 @@ body {
     /* justify-content: center; */
     flex-direction: column;  
     background-color: var(--background);
+    /* background-image: url(./images/background-grain.png); */
     border-radius: 10px;
 }
 
 
 #grid-container {
     background-color: var(--header);
-    border-bottom: 2px solid #000000;
+    border-bottom: 3px solid #000000;
 }
 
 
@@ -24,6 +25,12 @@ body {
     justify-content: space-around;
     margin: 0 20px 0 0;
 
+}
+
+img {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
 }
 
 h1 {
@@ -45,6 +52,11 @@ p {
     
 }
 
+.thumbnail {
+    border: 3px solid var(--background);
+    margin: 5px;
+}
+
 .center-form {
     justify-content: center;
     display: flex;
@@ -52,3 +64,11 @@ p {
     padding: 30px;
 }
 
+.off-canvas {
+    background: var(--header);
+}
+
+.off-canvas-content {
+    display: flex;
+    justify-content: center;
+}
