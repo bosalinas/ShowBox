@@ -1,12 +1,16 @@
 
+
+
+
 var searchButton = document.querySelector("#searchButton")
 
 var sampleData = [{
-        release_date: "2016-10-19",
-        title: "Jack Reacher: Never Go Back",
-        poster_path: "/cOg3UT2NYWHZxp41vpxAnVCOC4M.jpg",
-        sources: {
-            web_url: "https://www.amazon.com/gp/video/detail/amzn1.dv.gti.acabc6b0-07af-2d3f-d166-ccd78097dd17?tag="}
+    release_date: "2016-10-19",
+    title: "Jack Reacher: Never Go Back",
+    poster_path: "/cOg3UT2NYWHZxp41vpxAnVCOC4M.jpg",
+    sources: {
+        web_url: "https://www.amazon.com/gp/video/detail/amzn1.dv.gti.acabc6b0-07af-2d3f-d166-ccd78097dd17?tag="
+    }
 }];
 
 //function to find all data for both APIs
@@ -57,7 +61,7 @@ var sampleData = [{
 
 //movie that user chooses 
 
-function userMovieChoice(movie){
+function userMovieChoice(movie) {
     console.log("movie: ", movie);
     var movieEntered = document.getElementById("movieInput").value;
     searchAPI(movieEntered);
@@ -66,23 +70,23 @@ function userMovieChoice(movie){
 
 
 
-//search button event listener and function - DONE
+    //search button event listener and function - DONE
 
-function searchBtn(event) {
-    event.preventDefault();
-   var movieSearched = document.getElementById("movieInput").value;
-   if (!movieSearched) {
-       console.error("You need a search input value!");
-       return;
-   }
-   displayResults(searchAPI());
-   //userMovieChoice(movieSearched);
-};
-searchButton.addEventListener("click",searchBtn);
+    function searchBtn(event) {
+        event.preventDefault();
+        var movieSearched = document.getElementById("movieInput").value;
+        if (!movieSearched) {
+            console.error("You need a search input value!");
+            return;
+        }
+        displayResults(searchAPI());
+        //userMovieChoice(movieSearched);
+    };
+    searchButton.addEventListener("click", searchBtn);
 
 
-// function searchBtn(event) {
-//     event.preventDefault();
+    // function searchBtn(event) {
+    //     event.preventDefault();
 
 
     var movieSearched = document.getElementById("movieInput").value;
@@ -93,7 +97,7 @@ searchButton.addEventListener("click",searchBtn);
     }
     userMovieChoice(movieSearched);
 };
-searchButton.addEventListener("click",searchBtn);
+searchButton.addEventListener("click", searchBtn);
 
 //     var movieSearched = document.querySelector(".search-input").value;
 
