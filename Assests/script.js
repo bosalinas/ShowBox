@@ -84,8 +84,17 @@ function userMovieChoice(movie){
         return;
     }
     userMovieChoice(movieSearched);
+    if (movieSearched == "") {
+        searchHistory.push(movieSearched);
+        savedata();
+    }
 };
 searchButton.addEventListener("click",searchBtn);
 
 
 
+//function to save movie to local storage- emily 5/31
+function savedata() {
+    localStorage.setItem("history", JSON.stringify(searchHistory));
+  }
+  
