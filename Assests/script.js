@@ -68,12 +68,6 @@ function searchAPI(movie) {
 
 // searchAPI();
 
-//function to display search results
-
-// function displayResults(){
-
-// };
-
 function displayResults(data) {
     console.log(data);
     console.log(data.length);
@@ -129,7 +123,6 @@ searchButton.addEventListener("click",searchBtn);
 
 // function searchBtn(event) {
 //     event.preventDefault();
-
 
     var movieSearched = document.getElementById("movieInput").value;
 
