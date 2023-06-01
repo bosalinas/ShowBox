@@ -39,14 +39,14 @@ function displayResults(data) {
     var dateEl = document.querySelector('#release-date');
     //updating index with data from watchmode api
     movieNameEl.textContent = data.title;
-    
+
     dateEl.textContent = data.release_date;
     posterEl.src = data.poster;
 
-    for (i = 0; i<data.sources.length; i++ ) {
-        var format=data.sources[i].format;
+    for (i = 0; i < data.sources.length; i++) {
+        var format = data.sources[i].format;
         if (format === "HD") {
-            console.log (data.sources[i].name);
+            console.log(data.sources[i].name);
             var stream = document.createElement("a");
             stream.innerHTML = `<a href="${data.sources[i].web_url}">${data.sources[i].name}</a>`
             whereToWatchEl.append(stream);
@@ -63,13 +63,11 @@ function displayResults(data) {
 
 function displayResults(data) {
 
-function userMovieChoice(movie) {
-    console.log("movie: ", movie);
-    var movieEntered = document.getElementById("movieInput").value;
-    searchAPI(movieEntered);
-};
-
-
+    function userMovieChoice(movie) {
+        console.log("movie: ", movie);
+        var movieEntered = document.getElementById("movieInput").value;
+        searchAPI(movieEntered);
+    };
 
 
 
@@ -88,22 +86,23 @@ function userMovieChoice(movie) {
     searchButton.addEventListener("click", searchBtn);
 
 
+
     // function searchBtn(event) {
     //     event.preventDefault();
 
-//event listener and search button function - DONE
- function searchBtn(event) {
-     event.preventDefault();
+    //event listener and search button function - DONE
+    function searchBtn(event) {
+        event.preventDefault();
 
-    var movieSearched = document.getElementById("movieInput").value;
+        var movieSearched = document.getElementById("movieInput").value;
 
-    if (!movieSearched) {
-        console.error('You need a search input value!');
-        return;
-    }
-    userMovieChoice(movieSearched);
-};
-searchButton.addEventListener("click", searchBtn);
+        if (!movieSearched) {
+            console.error('You need a search input value!');
+            return;
+        }
+        userMovieChoice(movieSearched);
+    };
+    searchButton.addEventListener("click", searchBtn);
 
 
 }

@@ -53,7 +53,7 @@ p {
 }
 
 .thumbnail {
-    border: 3px solid var(--header);
+    border: 3px solid var(--background);
     margin: 5px;
 }
 
@@ -64,3 +64,11 @@ p {
     padding: 30px;
 }
 
+.off-canvas {
+    background: var(--header);
+}
+
+.off-canvas-content {
+    display: flex;
+    justify-content: center;
+}

@@ -5,13 +5,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css"
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/css/foundation.min.css"
+        integrity="sha256-1mcRjtAxlSjp6XJBgrBeeCORfBp/ppyX4tsvpQVCcpA= sha384-b5S5X654rX3Wo6z5/hnQ4GBmKuIJKMPwrJXn52ypjztlnDK2w9+9hSMBz/asy9Gw sha512-M1VveR2JGzpgWHb0elGqPTltHK3xbvu3Brgjfg4cg5ZNtyyApxw/45yHYsZ/rCVbfoO5MSZxB241wWq642jLtA=="
         crossorigin="anonymous">
 
+    <!-- COMPRESSED JAVASCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/js/foundation.min.js"
+        integrity="sha256-WUKHnLrIrx8dew//IpSEmPN/NT3DGAEmIePQYIEJLLs= sha384-53StQWuVbn6figscdDC3xV00aYCPEz3srBdV/QGSXw3f19og3Tq2wTRe0vJqRTEO sha512-X9O+2f1ty1rzBJOC8AXBnuNUdyJg0m8xMKmbt9I3Vu/UOWmSg5zG+dtnje4wAZrKtkopz/PEDClHZ1LXx5IeOw=="
+        crossorigin="anonymous"></script>
 
     <!-- STYLE SHEETS -->
-    <link rel="stylesheet" href="./Assests/foundation.min.css">
+    <!-- <link rel="stylesheet" href="./Assests/foundation.min.css"> -->
     <link rel="stylesheet" href="./Assests/foundation.css">
     <link rel="stylesheet" href="./Assests/style.css" />
     <!-- FONTS -->
@@ -65,23 +71,53 @@
             <div id="current-movie" class="current-movie">
                 <img class="text-center" src=" " id="poster-image"> </img> <br>
                 <p class="text-center" id="release-date">Movie Date</p>
-                <div class="text-center" id="whereToWatch"></div>
+                <div class="text-center" id="whereToWatch"> </div>
             </div>
         </div>
     </main>
 
-    <div class="grid-x grid-padding-x" id="savedSearches">
-        <div class="large-12 cell text-center">
-            <h2 class="text-center" id="movieName"> Saved Searches </h2>
-                <a href="#" class="thumbnail" id="moviePoster"> <img src="./Assests/images/shrek (1).jpg" alt="Photo of Uranus." style="width: 100px; height: 145px;" > </a>
-                <a href="#" class="thumbnail"> <img src="/Assests/images/evil dead (1).webp" alt="Photo of Neptune." style="width: 100px; height: 145px;" > </a>
-                <a href="#" class="thumbnail"> <img src="/Assests/images/the matrix (1).jpg" alt="Photo of Pluto." style="width: 100px; height: 145px;" > </a> 
+
+    <!-- TOGGLE FOR SAVED SEARCHES -->
+    <div class="off-canvas-wrapper">
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+            <div class="off-canvas position-bottom" id="offCanvas" data-off-canvas data-position="bottom">
+                <div class="grid-x grid-padding-x" id="savedSearches">
+                    <!---------***---------->
+                    <!-- SAVED SEARCHES -->
+                    <div class="large-12 cell text-center">
+                        <h2 class="text-center" id="movieName"> Saved Searches </h2>
+                        <a href="#" class="thumbnail"><img src="Assests/images/evil dead(2).jpg"
+                                style="width: 100px; height: 145px;"> </a>
+                        <a href="#" class="thumbnail"><img src="Assests/images/shrek.jpg"
+                                style="width: 100px; height: 145px;"> </a>
+                        <a href="#" class="thumbnail"><img src="Assests/images/the matrix.jpg"
+                                style="width: 100px; height: 145px;"> </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOGGLE BUTTON -->
+            <div class="off-canvas-content" data-off-canvas-content>
+                <button class="button " type="button text-center"  data-toggle="offCanvas">
+                    Saved Searches
+                </button>
+            </div>
+
+        </div>
     </div>
-    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
+        })
+    </script>
+
+
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js"
     crossorigin="anonymous"></script> -->
-    
+
     <script src="./Assests/script.js"></script>
 
 </body>
