@@ -104,5 +104,3 @@ function savedata() {
     localStorage.setItem(movieInput, JSON.stringify(searchHistory));
     console.log(savedata);
 };
-  
-  
