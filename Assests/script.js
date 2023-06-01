@@ -1,5 +1,6 @@
 //variables
 var searchButton = document.querySelector("#searchButton")
+
 var searchButton = document.getElementById("searchButton")
 var tmdbApiKey = "0d6d6b4bebecbfdfd42593dcd6f307e6"
 var watchmodeApiKey = "Pmd5eUDJou34DMGyeaDChDeFLhOJHRxVt1MfzboM"
