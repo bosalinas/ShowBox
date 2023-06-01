@@ -5,6 +5,9 @@ var searchButton = document.getElementById("searchButton")
 var tmdbApiKey = "0d6d6b4bebecbfdfd42593dcd6f307e6"
 var watchmodeApiKey = "Pmd5eUDJou34DMGyeaDChDeFLhOJHRxVt1MfzboM"
 
+//emily
+var searchHistory = [];
+
 //function to find all data for both APIs
 function searchAPI(movie) {
     console.log("move string: ", movie)
@@ -84,7 +87,9 @@ function userMovieChoice(movie){
         return;
     }
     userMovieChoice(movieSearched);
-    if (movieSearched == "") {
+
+    // emily 5/31
+    if (movieSearched) {
         searchHistory.push(movieSearched);
         savedata();
     }
@@ -94,7 +99,10 @@ searchButton.addEventListener("click",searchBtn);
 
 
 //function to save movie to local storage- emily 5/31
+
 function savedata() {
-    localStorage.setItem("history", JSON.stringify(searchHistory));
-  }
+    localStorage.setItem(movieInput, JSON.stringify(searchHistory));
+    console.log(savedata);
+};
+  
   
