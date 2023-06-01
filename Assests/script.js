@@ -34,6 +34,8 @@ function searchAPI(movie) {
 };
 
 
+// searchAPI();
+
 function displayResults(data) {
 
     //variables from index sheet - where data is gonna display
@@ -76,6 +78,7 @@ function userMovieChoice(movie){
 //event listener and search button function - DONE
  function searchBtn(event) {
      event.preventDefault();
+
 
     var movieSearched = document.getElementById("movieInput").value;
 
