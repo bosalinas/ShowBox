@@ -47,6 +47,15 @@
     </div>
     <!-- </div> -->
 
+    <!-- TOGGLE FOR DARK MODE -->
+    <div class="switch">
+        <input class="switch-input" id="switch" type="checkbox" name="switch">
+        <label class="switch-paddle" for="switch">
+            <p class="show-for-sr">Dark Mode</p>
+        </label>
+    </div>
+
+    
     <!-- SEARCH CONTENT -->
     <div class="row text-center" id="searchContainer">
         <h2>Search for a Movie</h2>
@@ -67,13 +76,24 @@
     <!-- MOVIE SEARCH RESULTS -->
     <main class="medium-centered columns ">
         <div class="search-results" id="searchResults">
+            <!-- MOVIE NAME -->
             <h2 class="text-center" id="movieName"> Movie Name </h2>
+                <div class="row text-center">
+                    <div class="columns small-6 small-centered" id="current-movie" >
+                        <!-- POSTER IMAGE -->
+                        <img class="text-center" src=" " id="poster-image"> </img> <br>
+                        <!-- MOVIE DATE  -->
+                        <p class="text-center" id="release-date">Movie Date</p>
+                        <h2 id="whereWatch">Where to Watch</h2>
+                            <!-- SCROLLING CONTAINER -->
+                            
+                            <div class="columns small-12 medium-7 watch-list-scrolling" id="scrollBox">
+                                <!-- WHERE TO WATCH DATA -->
+                                <div class="text-center" id="whereToWatch"> </div>  
+                            </div>
 
-            <div id="current-movie" class="current-movie">
-                <img class="text-center" src=" " id="poster-image"> </img> <br>
-                <p class="text-center" id="release-date">Movie Date</p>
-                <div class="text-center" id="whereToWatch"> </div>
-            </div>
+                    </div>
+                </div>
         </div>
     </main>
 
@@ -87,8 +107,8 @@
                     <!---------***---------->
                     <!-- SAVED SEARCHES -->
                     <div class="large-12 cell text-center">
-                        <h2 class="text-center" id="movieName"> Saved Searches </h2>
-                        <a href="#" class="thumbnail"><img src="Assests/images/evil dead(2).jpg"
+                        <div class="text-center" id="movieName"> Saved Searches </div>
+                        <a href="#" class="thumbnail" ><img src="Assests/images/evil dead(2).jpg"
                                 style="width: 100px; height: 145px;"> </a>
                         <a href="#" class="thumbnail"><img src="Assests/images/shrek.jpg"
                                 style="width: 100px; height: 145px;"> </a>
@@ -100,14 +120,13 @@
 
             <!-- TOGGLE BUTTON -->
             <div class="off-canvas-content" data-off-canvas-content>
-                <button class="button " type="button text-center"  data-toggle="offCanvas">
+                <button class="button " type="button text-center" data-toggle="offCanvas" id="buttonS">
                     Saved Searches
                 </button>
             </div>
-
         </div>
     </div>
-    <!-- HARDED CODED JAVASCRIPT FOR TOGGLE  -->
+    <!-- HARD CODED JAVASCRIPT FOR TOGGLE  -->
     <script>
         $(document).ready(function () {
             $(document).foundation();

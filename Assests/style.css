@@ -1,27 +1,29 @@
 :root {
-    --background: rgb(243, 230, 216);
-    --header: rgb(235, 62, 62);
+    --Beige: rgb(243, 230, 216);
+    --Red: rgb(235, 62, 62);
+    --Raisin-black: rgb(36, 33, 36);
 }
+
 /* CONTAINER COLOR TESTSSS */
 body {
     display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
-    flex-direction: column;  
-    background-color: var(--background);
-    /* background-image: url(./images/background-grain.png); */
-    border-radius: 10px;
+    flex-direction: column;
+    background-color: var(--Beige);
+    font-family: 'Work Sans', serif;
+    color: black;
+    border-bottom: black;
 }
 
 
+
 #grid-container {
-    background-color: var(--header);
+    background-color: var(--Red);
     border-bottom: 3px solid #000000;
 }
 
 
 #inputContainer {
-    display:flex;
+    display: flex;
     justify-content: space-around;
     margin: 0 20px 0 0;
 
@@ -35,25 +37,29 @@ img {
 
 h1 {
     font-family: 'Work Sans', serif;
-    font-size: 4.5em; 
-    font-weight: bold ;
-    
+    font-size: 4.5em;
+    font-weight: bold;
+
 }
 
 h2 {
     font-family: 'Work Sans', serif;
-    font-size: 2em; 
-    
+    font-size: 2em;
+
 }
 
 p {
     font-family: 'Work Sans', serif;
-    font-size: 1em; 
-    
+    font-size: 1em;
+
+}
+
+li {
+    list-style: none;
 }
 
 .thumbnail {
-    border: 3px solid var(--background);
+    border: 3px solid var(--Beige);
     margin: 5px;
 }
 
@@ -65,10 +71,55 @@ p {
 }
 
 .off-canvas {
-    background: var(--header);
+    background: var(--Red);
 }
 
 .off-canvas-content {
     display: flex;
     justify-content: center;
+}
+
+.switch {
+    position: relative;
+    /* top: 40%;
+    width: 100%; */
+    margin-left: 0px;
+    text-align: left;
+    font-size: 18px;
+
+}
+/* SCROLL STYLING  */
+.watch-list-overview {
+    height: 200px;
+    overflow: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+    opacity: 1;
+    z-index: 0;
+}
+
+.watch-list-overview-content {
+    max-width: 300px;
+    z-index: 1;
+}
+
+.watch-list-scrolling {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media print,
+screen and (min-width: 40em) {
+    .watch-list-scrolling {
+        height: 200px;
+        overflow: auto;
+    }
 }
