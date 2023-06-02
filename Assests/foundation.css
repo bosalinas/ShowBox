@@ -2520,7 +2520,7 @@ code, .code-inline {
     background-color: #c2269600;
     color: #000000; }
   .button:hover, .button:focus {
-    background-color: var(--header);
+    background-color: var(--Red);
     color: #000000; }
   .button.primary, .button.primary.disabled, .button.primary[disabled], .button.primary.disabled:hover, .button.primary[disabled]:hover, .button.primary.disabled:focus, .button.primary[disabled]:focus {
     background-color: #1779ba;
@@ -5062,7 +5062,7 @@ html.is-reveal-open {
     transition: all 0.25s ease-out;
     content: ''; }
   input:checked ~ .switch-paddle {
-    background: #1779ba; }
+    background: #eb3e3e }
     input:checked ~ .switch-paddle::after {
       left: 2.25rem; }
   input:disabled ~ .switch-paddle {

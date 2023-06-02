@@ -9,6 +9,41 @@ let savedItem = document.querySelectorAll(".thumbnail");
 //emily
 var searchHistory = [];
 
+// TOGGLE SWITCH 
+let toggleSwitch = document.querySelector("input");
+
+toggleSwitch.addEventListener("change",(e) => {
+    let body = document.querySelector("body");
+    let title = document.querySelector("#grid-container");
+    let font = document.querySelector("h2");
+    let fontTwo = document.querySelector("#release-date");
+    let fontThree = document.querySelector("#movieName");
+    let fontFour = document.querySelector("#whereWatch");
+    let button = document.querySelector("button");
+    let buttonS = document.querySelector("#buttonS");
+    
+
+    if (e.target.checked) {
+        body.style.backgroundColor = "#242124";
+        title.style.backgroundColor = "#eb3e3e";
+        font.style.color = "#f3e6d8";
+        fontTwo.style.color = "#f3e6d8";
+        fontThree.style.color = "#f3e6d8";
+        fontFour.style.color = "#f3e6d8";
+        button.style.color = "#f3e6d8";
+        buttonS.style.color = "#f3e6d8";
+    } else {
+        body.style.backgroundColor = "#f3e6d8";
+        title.style.backgroundColor = "#eb3e3e";
+        font.style.color = "#000000";
+        fontTwo.style.color = "#000000";
+        fontThree.style.color = "#000000";
+        fontFour.style.color = "#000000";
+        button.style.color = "#000000";
+        buttonS.style.color = "#000000"
+    }
+});
+
 //function to find all data for both APIs
 function searchAPI(movie) {
     // console.log("move string: ", movie)
@@ -47,9 +82,11 @@ function displayResults(data) {
     var posterEl = document.querySelector('#poster-image');
     var whereToWatchEl = document.querySelector('#whereToWatch');
     var dateEl = document.querySelector('#release-date');
+    var scrollBoxEl = document.querySelector('#scrollBox');
+
     //updating index with data from watchmode api
     movieNameEl.textContent = data.title;
-    
+
     dateEl.textContent = data.release_date;
     posterEl.src = data.poster;
     searchHistory= json.parse(localStorage.getItem("data")) || [];
@@ -58,11 +95,12 @@ function displayResults(data) {
         poster: data.poster,
     })
 
-    for (i = 0; i<data.sources.length; i++ ) {
-        var format=data.sources[i].format;
+    for (i = 0; i < data.sources.length; i++) {
+        var format = data.sources[i].format;
         if (format === "HD") {
-            // console.log (data.sources[i].name);
-            var stream = document.createElement("a");
+
+            console.log(data.sources[i].name);
+            var stream = document.createElement("li");
             stream.innerHTML = `<a href="${data.sources[i].web_url}">${data.sources[i].name}</a>`
             whereToWatchEl.append(stream);
             
@@ -77,8 +115,10 @@ function displayResults(data) {
 
 
 //grab value/movie entered by user - DONE
+
 function userMovieChoice(movie){
     // console.log("movie: ", movie);
+
     var movieEntered = document.getElementById("movieInput").value;
     searchAPI(movieEntered);
 };
@@ -86,7 +126,9 @@ function userMovieChoice(movie){
 
 //event listener and search button function - DONE
 function searchBtn(event) {
+
      event.preventDefault();
+
 
      var movieSearched = document.getElementById("movieInput").value;
      
@@ -103,66 +145,40 @@ function searchBtn(event) {
         savedata();
     }
 };
-searchButton.addEventListener("click",searchBtn);
-
+searchButton.addEventListener("click", searchBtn);
 
 
 //function to save movie to local storage- emily 5/31- done
 
+
+//function to save movie to local storage- emily 5/31- done
 function savedata() {
-    localStorage.setItem("data", JSON.stringify(searchHistory));
-    // console.log();
+
+    localStorage.setItem("movieInput", JSON.stringify(searchHistory));
+    console.log();
 };
-// button event listener for saved searches
+//button event listener for saved searches
+document.getElementById("savedButton").addEventListener("click", displaysavedata);
+var savedSearches = document.getElementById("savedSearches");
+function displaysavedata() {
+    var historyList = document.querySelector(".movieInput");
+    historyList.innerHTML = "";
+    searchHistory.forEach(function (movieSearched) {
+        var li = document.createElement("li");
+        li.textContent = posterEl;
+        li.addEventListener("click", function () {
+            cityInput.value = city;
+            getCurrentWeather(city);
+        });
+        historyList.appendChild(li);
+    });
+}
+// Load search history from local storage
+function loadSearchHistory() {
+    var history = localStorage.getItem("history");
+    if (history) {
+        searchHistory = JSON.parse(history);
+        displaysavedata();
+    }
+}
 
-// document.getElementById("savedButton").addEventListener("click", displaysavedata);
-// var savedSearches = document.getElementById("savedSearches");
-
-
-// // Function to display search history
-// function displaysavedata() {
-//         var historyList = document.querySelector(".history");
-//     historyList.innerHTML = "";
-
-//     searchHistory.forEach(function (movieSearched) {
-//       var li = document.createElement("li");
-//       li.textContent = posterEl;
-//       li.addEventListener("click", function () {
-//             cityInput.value = city;
-//             getCurrentWeather(city);
-//           });
-//           historyList.appendChild(li);
-//         });
-//       }
-// // Load search history from local storage
-// function loadsavedata() {
-//   var history = localStorage.getItem("data");
-//   if (data) {
-//         searchHistory = JSON.parse(history);
-//         displaysavedata();
-//   }
-// }
-
-    
-
-
-// ta code
-// var requestUrl = 'https://api.github.com/orgs/nodejs/repos?per_page=5';
-
-
-// function getApi(requestUrl) {
-//   fetch(requestUrl)
-//     .then(function (response) {
-//       console.log(response);
-//       for(let i = 0; i < savedItem.length; i++) {
-//           savedItem[i].addEventListener("click", function () {
-//               console.log("hey");
-//           });
-//       }
-
-
-   
-//   });
-// }
-
-// getApi(requestUrl);
