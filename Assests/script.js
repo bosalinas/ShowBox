@@ -4,6 +4,7 @@ var searchButton = document.querySelector("#searchButton")
 var searchButton = document.getElementById("searchButton")
 var tmdbApiKey = "0d6d6b4bebecbfdfd42593dcd6f307e6"
 var watchmodeApiKey = "Pmd5eUDJou34DMGyeaDChDeFLhOJHRxVt1MfzboM"
+let savedItem = document.querySelectorAll(".thumbnail");
 
 //emily
 var searchHistory = [];
@@ -45,35 +46,37 @@ toggleSwitch.addEventListener("change",(e) => {
 
 //function to find all data for both APIs
 function searchAPI(movie) {
-    console.log("move string: ", movie)
+    // console.log("move string: ", movie)
     //tmdb api call below  provides ID for watchmodeapi 
     var tmdbUrl = `https://api.themoviedb.org/3/search/movie?api_key=${tmdbApiKey}&query=${movie}`
     fetch(tmdbUrl).then(function (response) {
-        console.log(response);
+        // console.log(response);
         return response.json();
     }).then(function (data) {
-        console.log("tmdbapi:", data)
+        // console.log("tmdbapi:", data)
         var tmdbApiId = data.results[0].id;
         var tmdbTitle = data.results[0].title;
-        console.log("tmdbapiId ", tmdbApiId);
-        console.log("tmdbTitle: ", tmdbTitle);
+        // console.log("tmdbapiId ", tmdbApiId);
+        // console.log("tmdbTitle: ", tmdbTitle);
         var tmdbMovieId = "movie-" + tmdbApiId;
-        console.log(tmdbMovieId)
+        // console.log(tmdbMovieId)
         //using id from tmdbapi , we're calling the watchmode api below to provide display data
         var watchmodeApiUrl = `https://api.watchmode.com/v1/title/${tmdbMovieId}/details/?apiKey=${watchmodeApiKey}&append_to_response=sources`
         console.log(watchmodeApiUrl);
         fetch(watchmodeApiUrl).then(function (response) {
             return response.json();
         }).then(function (data) {
-            console.log("watchmodeapi:", data);
+            // console.log("watchmodeapi:", data);
             displayResults(data);
         })
     });
 };
 
 
-function displayResults(data) {
 
+//add array to add to local storage
+function displayResults(data) {
+    
     //variables from index sheet - where data is gonna display
     var movieNameEl = document.querySelector('#movieName');
     var posterEl = document.querySelector('#poster-image');
@@ -86,10 +89,16 @@ function displayResults(data) {
 
     dateEl.textContent = data.release_date;
     posterEl.src = data.poster;
+    searchHistory= json.parse(localStorage.getItem("data")) || [];
+    searchHistory.push({
+        title: data.title,
+        poster: data.poster,
+    })
 
     for (i = 0; i < data.sources.length; i++) {
         var format = data.sources[i].format;
         if (format === "HD") {
+
             console.log(data.sources[i].name);
             var stream = document.createElement("li");
             stream.innerHTML = `<a href="${data.sources[i].web_url}">${data.sources[i].name}</a>`
@@ -97,17 +106,19 @@ function displayResults(data) {
             
         }
     }
-
-    console.log('title', movieNameEl);
-    console.log('poster', posterEl);
-    console.log('where to watch', whereToWatchEl);
-    console.log('date', dateEl);
+    
+    // console.log('title', movieNameEl);
+    // console.log('poster', posterEl);
+    // console.log('where to watch', whereToWatchEl);
+    // console.log('date', dateEl);
 };
 
 
 //grab value/movie entered by user - DONE
-function userMovieChoice(movie) {
-    console.log("movie: ", movie);
+
+function userMovieChoice(movie){
+    // console.log("movie: ", movie);
+
     var movieEntered = document.getElementById("movieInput").value;
     searchAPI(movieEntered);
 };
@@ -115,18 +126,21 @@ function userMovieChoice(movie) {
 
 //event listener and search button function - DONE
 function searchBtn(event) {
-    event.preventDefault();
 
-    var movieSearched = document.getElementById("movieInput").value;
+     event.preventDefault();
 
-    if (!movieSearched) {
+
+     var movieSearched = document.getElementById("movieInput").value;
+     
+     if (!movieSearched) {
         console.error('You need a search input value!');
         return;
     }
     userMovieChoice(movieSearched);
-
+    
     // emily 5/31
     if (movieSearched) {
+        searchHistory = JSON.parse(localStorage.getItem("data")) || [];
         searchHistory.push(movieSearched);
         savedata();
     }
@@ -134,9 +148,12 @@ function searchBtn(event) {
 searchButton.addEventListener("click", searchBtn);
 
 
+//function to save movie to local storage- emily 5/31- done
+
 
 //function to save movie to local storage- emily 5/31- done
 function savedata() {
+
     localStorage.setItem("movieInput", JSON.stringify(searchHistory));
     console.log();
 };
@@ -164,3 +181,4 @@ function loadSearchHistory() {
         displaysavedata();
     }
 }
+
