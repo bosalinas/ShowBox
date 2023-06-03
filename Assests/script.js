@@ -66,7 +66,7 @@ function searchAPI(movie) {
         fetch(watchmodeApiUrl).then(function (response) {
             return response.json();
         }).then(function (data) {
-            // console.log("watchmodeapi:", data);
+            console.log("watchmodeapi:", data);
             displayResults(data);
         })
     });
@@ -83,13 +83,14 @@ function displayResults(data) {
     var whereToWatchEl = document.querySelector('#whereToWatch');
     var dateEl = document.querySelector('#release-date');
 
-
+    
     //updating index with data from watchmode api
     movieNameEl.textContent = data.title;
 
     dateEl.textContent = data.release_date;
     posterEl.src = data.poster;
-    searchHistory = json.parse(localStorage.getItem("data")) || [];
+    let searchHistory = JSON.parse(localStorage.getItem('data')) || [];
+    console.log(searchHistory.length);
     searchHistory.push({
         title: data.title,
         poster: data.poster,
@@ -149,17 +150,15 @@ searchButton.addEventListener("click", searchBtn);
 
 
 //function to save movie to local storage- emily 5/31- done
-
-
-//function to save movie to local storage- emily 5/31- done
 function savedata() {
 
     localStorage.setItem("movieInput", JSON.stringify(searchHistory));
     console.log();
 };
 //button event listener for saved searches
-document.getElementById("savedButton").addEventListener("click", displaysavedata);
+document.getElementById("buttonS").addEventListener("click", displaysavedata);
 var savedSearches = document.getElementById("savedSearches");
+
 function displaysavedata() {
     var historyList = document.querySelector(".movieInput");
     historyList.innerHTML = "";
