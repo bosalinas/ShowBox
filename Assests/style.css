@@ -116,6 +116,14 @@ li {
     padding-bottom: 10px;
 }
 
+.movieContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+.movieContainer img {
+    cursor: pointer;
+}
+
 @media print,
 screen and (min-width: 40em) {
     .watch-list-scrolling {

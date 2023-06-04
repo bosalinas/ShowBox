@@ -3,7 +3,7 @@ var searchButton = document.querySelector("#searchButton")
 
 var searchButton = document.getElementById("searchButton")
 var tmdbApiKey = "0d6d6b4bebecbfdfd42593dcd6f307e6"
-var watchmodeApiKey = "Pmd5eUDJou34DMGyeaDChDeFLhOJHRxVt1MfzboM"
+var watchmodeApiKey = "5kNbtVxHxdzY19ouextUcwjhwHMvvwUt5XBqrshu"
 let savedItem = document.querySelectorAll(".thumbnail");
 
 //emily
@@ -56,8 +56,6 @@ function searchAPI(movie) {
         // console.log("tmdbapi:", data)
         var tmdbApiId = data.results[0].id;
         var tmdbTitle = data.results[0].title;
-        // console.log("tmdbapiId ", tmdbApiId);
-        // console.log("tmdbTitle: ", tmdbTitle);
         var tmdbMovieId = "movie-" + tmdbApiId;
         // console.log(tmdbMovieId)
         //using id from tmdbapi , we're calling the watchmode api below to provide display data
@@ -67,6 +65,12 @@ function searchAPI(movie) {
             return response.json();
         }).then(function (data) {
             console.log("watchmodeapi:", data);
+            const formattedPayload = {
+                movieTitle: data.title,
+                movieImg: data.poster
+            }
+            searchHistory.push(formattedPayload);
+            localStorage.setItem("movieHistory", JSON.stringify(searchHistory))
             displayResults(data);
         })
     });
@@ -86,16 +90,10 @@ function displayResults(data) {
     
     //updating index with data from watchmode api
     movieNameEl.textContent = data.title;
-
     dateEl.textContent = data.release_date;
     posterEl.src = data.poster;
-    let searchHistory = JSON.parse(localStorage.getItem('data')) || [];
-    console.log(searchHistory.length);
-    searchHistory.push({
-        title: data.title,
-        poster: data.poster,
-    })
 
+    whereToWatchEl.innerHTML = "";
     for (i = 0; i < data.sources.length; i++) {
         var format = data.sources[i].format;
         if (format === "HD") {
@@ -104,6 +102,8 @@ function displayResults(data) {
             var stream = document.createElement("li");
             stream.innerHTML = `<a href="${data.sources[i].web_url}">${data.sources[i].name}</a>`
             whereToWatchEl.append(stream);
+        
+        if (i === 2) {break};
 
         }
     }
@@ -139,45 +139,35 @@ function searchBtn(event) {
     }
     userMovieChoice(movieSearched);
 
-    // emily 5/31
-    if (movieSearched) {
-        searchHistory = JSON.parse(localStorage.getItem("data")) || [];
-        searchHistory.push(movieSearched);
-        savedata();
-    }
 };
 searchButton.addEventListener("click", searchBtn);
 
-
-//function to save movie to local storage- emily 5/31- done
-function savedata() {
-
-    localStorage.setItem("movieInput", JSON.stringify(searchHistory));
-    console.log();
-};
 //button event listener for saved searches
 document.getElementById("buttonS").addEventListener("click", displaysavedata);
 var savedSearches = document.getElementById("savedSearches");
 
 function displaysavedata() {
-    var historyList = document.querySelector(".movieInput");
+    var historyList = document.querySelector(".movieContainer");
     historyList.innerHTML = "";
     searchHistory.forEach(function (movieSearched) {
-        var li = document.createElement("li");
-        li.textContent = posterEl;
-        li.addEventListener("click", function () {
-            cityInput.value = city;
-            getCurrentWeather(city);
+        var img = document.createElement("img");
+        img.setAttribute("name", movieSearched.movieTitle);
+        img.setAttribute("src", movieSearched.movieImg);
+        img.addEventListener("click", function (e) {
+            var movieToSearch = e.target.name
+            searchAPI(movieToSearch);
         });
-        historyList.appendChild(li);
+        historyList.appendChild(img);
     });
 }
+
 // Load search history from local storage
 function loadSearchHistory() {
-    var history = localStorage.getItem("history");
+    var history = localStorage.getItem("movieHistory");
     if (history) {
         searchHistory = JSON.parse(history);
         displaysavedata();
     }
 }
 
+loadSearchHistory()
