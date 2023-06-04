@@ -1,7 +1,10 @@
 # ShowBox
 
-## Motivation
-A movie database with simple, easy to use search.
+## Motivation - User Story
+AS A user with multiple streaming services 
+I WANT an app that can populate all the places where I can watch the movie of my choosing
+SO THAT I don’t have to search every individual streaming platform 
+
 
 ## Build Status
 Incomplete
