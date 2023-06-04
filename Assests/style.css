@@ -30,9 +30,9 @@ body {
 }
 
 img {
-    display: block;
-    text-align: center;
-    margin: 0 auto;
+    display: inline-block;
+    justify-content: center;
+    margin: 8px;
 }
 
 h1 {
@@ -59,7 +59,8 @@ li {
 }
 
 .thumbnail {
-    border: 3px solid var(--Beige);
+    border: 4px solid var(--Beige);
+    /* border: none; */
     margin: 5px;
 }
 
@@ -117,8 +118,8 @@ li {
 }
 
 .movieContainer {
-    display: flex;
-    justify-content: space-evenly;
+    display: inline-flex;
+    justify-content: center;
 }
 .movieContainer img {
     cursor: pointer;

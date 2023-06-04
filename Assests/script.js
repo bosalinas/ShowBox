@@ -147,12 +147,13 @@ document.getElementById("buttonS").addEventListener("click", displaysavedata);
 var savedSearches = document.getElementById("savedSearches");
 
 function displaysavedata() {
-    var historyList = document.querySelector(".movieContainer");
+    var historyList = document.querySelector("#movieContainer");
     historyList.innerHTML = "";
     searchHistory.forEach(function (movieSearched) {
         var img = document.createElement("img");
         img.setAttribute("name", movieSearched.movieTitle);
         img.setAttribute("src", movieSearched.movieImg);
+        // img.setAttribute("class",)
         img.addEventListener("click", function (e) {
             var movieToSearch = e.target.name
             searchAPI(movieToSearch);
