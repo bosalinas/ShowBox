@@ -3,8 +3,10 @@ var searchButton = document.querySelector("#searchButton")
 
 var searchButton = document.getElementById("searchButton")
 var tmdbApiKey = "0d6d6b4bebecbfdfd42593dcd6f307e6"
-var watchmodeApiKey = "5kNbtVxHxdzY19ouextUcwjhwHMvvwUt5XBqrshu"
+var watchmodeApiKey = "Fot0QCa6liBN8LaMkueATcC2pjuUfrCflHRo9XCP"
 let savedItem = document.querySelectorAll(".thumbnail");
+
+var typed = document.getElementById("movieInput");
 
 //emily
 var searchHistory = [];
@@ -44,6 +46,26 @@ toggleSwitch.addEventListener("change", (e) => {
     }
 });
 
+//button event listener for saved searches
+document.getElementById("buttonS").addEventListener("click", displaysavedata);
+var savedSearches = document.getElementById("savedSearches");
+
+function displaysavedata() {
+    var historyList = document.querySelector("#movieContainer");
+    historyList.innerHTML = "";
+    searchHistory.forEach(function (movieSearched) {
+        var img = document.createElement("img");
+        img.setAttribute("name", movieSearched.movieTitle);
+        img.setAttribute("src", movieSearched.movieImg);
+        // img.setAttribute("class",)
+        img.addEventListener("click", function (e) {
+            var movieToSearch = e.target.name
+            searchAPI(movieToSearch);
+        });
+        historyList.appendChild(img);
+    });
+}
+
 //function to find all data for both APIs
 function searchAPI(movie) {
     // console.log("move string: ", movie)
@@ -69,8 +91,19 @@ function searchAPI(movie) {
                 movieTitle: data.title,
                 movieImg: data.poster
             }
+
+        // const movieHistory = JSON.parse(localStorage.getItem('movieHistory'));
+        // const movieHistoryArray = movieHistory.includes('data');
+            
+        //     if(movieHistoryArray === true) {
+        //         searchHistory = JSON.parse(history);
+        //         console.log(history);
+        //         displaysavedata();
+        //     }
+
             searchHistory.push(formattedPayload);
             localStorage.setItem("movieHistory", JSON.stringify(searchHistory))
+            console.log(searchHistory);
             displayResults(data);
         })
     });
@@ -85,13 +118,15 @@ function displayResults(data) {
     var movieNameEl = document.querySelector('#movieName');
     var posterEl = document.querySelector('#poster-image');
     var whereToWatchEl = document.querySelector('#whereToWatch');
+    var whereWatchEl = document.querySelector('#whereWatch')
     var dateEl = document.querySelector('#release-date');
-
+    
     
     //updating index with data from watchmode api
     movieNameEl.textContent = data.title;
-    dateEl.textContent = data.release_date;
+    dateEl.textContent = "release date: " + data.release_date;
     posterEl.src = data.poster;
+    whereWatchEl.textContent = "Where to Watch: "
 
     whereToWatchEl.innerHTML = "";
     for (i = 0; i < data.sources.length; i++) {
@@ -107,11 +142,6 @@ function displayResults(data) {
 
         }
     }
-
-    // console.log('title', movieNameEl);
-    // console.log('poster', posterEl);
-    // console.log('where to watch', whereToWatchEl);
-    // console.log('date', dateEl);
 };
 
 
@@ -124,7 +154,6 @@ function userMovieChoice(movie) {
     searchAPI(movieEntered);
 };
 
-
 //event listener and search button function - DONE
 function searchBtn(event) {
 
@@ -134,7 +163,7 @@ function searchBtn(event) {
     var movieSearched = document.getElementById("movieInput").value;
 
     if (!movieSearched) {
-        console.error('You need a search input value!');
+        window.alert('You need a search input value!');
         return;
     }
     userMovieChoice(movieSearched);
@@ -142,33 +171,35 @@ function searchBtn(event) {
 };
 searchButton.addEventListener("click", searchBtn);
 
-//button event listener for saved searches
-document.getElementById("buttonS").addEventListener("click", displaysavedata);
-var savedSearches = document.getElementById("savedSearches");
+// //button event listener for saved searches
+// document.getElementById("buttonS").addEventListener("click", displaysavedata);
+// var savedSearches = document.getElementById("savedSearches");
 
-function displaysavedata() {
-    var historyList = document.querySelector("#movieContainer");
-    historyList.innerHTML = "";
-    searchHistory.forEach(function (movieSearched) {
-        var img = document.createElement("img");
-        img.setAttribute("name", movieSearched.movieTitle);
-        img.setAttribute("src", movieSearched.movieImg);
-        // img.setAttribute("class",)
-        img.addEventListener("click", function (e) {
-            var movieToSearch = e.target.name
-            searchAPI(movieToSearch);
-        });
-        historyList.appendChild(img);
-    });
-}
+// function displaysavedata() {
+//     var historyList = document.querySelector("#movieContainer");
+//     historyList.innerHTML = "";
+//     searchHistory.forEach(function (movieSearched) {
+//         var img = document.createElement("img");
+//         img.setAttribute("name", movieSearched.movieTitle);
+//         img.setAttribute("src", movieSearched.movieImg);
+//         // img.setAttribute("class",)
+//         img.addEventListener("click", function (e) {
+//             var movieToSearch = e.target.name
+//             searchAPI(movieToSearch);
+//         });
+//         historyList.appendChild(img);
+//     });
+// }
 
 // Load search history from local storage
 function loadSearchHistory() {
     var history = localStorage.getItem("movieHistory");
     if (history) {
         searchHistory = JSON.parse(history);
+        console.log(history);
         displaysavedata();
     }
+    
 }
 
 loadSearchHistory()
