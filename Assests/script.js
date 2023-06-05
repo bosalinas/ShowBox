@@ -3,7 +3,7 @@ var searchButton = document.querySelector("#searchButton")
 
 var searchButton = document.getElementById("searchButton")
 var tmdbApiKey = "0d6d6b4bebecbfdfd42593dcd6f307e6"
-var watchmodeApiKey = "5kNbtVxHxdzY19ouextUcwjhwHMvvwUt5XBqrshu"
+var watchmodeApiKey = "Fot0QCa6liBN8LaMkueATcC2pjuUfrCflHRo9XCP"
 let savedItem = document.querySelectorAll(".thumbnail");
 
 //emily
@@ -69,14 +69,28 @@ function searchAPI(movie) {
                 movieTitle: data.title,
                 movieImg: data.poster
             }
+            //this array takes down any data in locational storage and 
+            //pushes it to the array if there is no data. 
+            //if not data, makes an empty array
+            //gonna use this arary to check formated payload for a matching movie. 
+            const movieArray = JSON.parse(localStorage.getItem("movieHistory"))||[];
+            
+            var isCopy = false;
+            //loops through every title and updates the copied variable if there is a duplicate
+            for (let i = 0; i < movieArray.length; i++) {
+                if (movieArray[i].movieTitle === formattedPayload.movieTitle) {
+                    isCopy = true;
+                }
+           }
+           //if there isnt a duplicate,data is pushed to local storage
+           if (isCopy === false) {
             searchHistory.push(formattedPayload);
             localStorage.setItem("movieHistory", JSON.stringify(searchHistory))
-            displayResults(data);
+           }
+           displayResults(data);
         })
     });
 };
-
-
 
 //add array to add to local storage
 function displayResults(data) {
