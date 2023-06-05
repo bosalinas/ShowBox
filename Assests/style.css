@@ -1,0 +1,134 @@
+:root {
+    --Beige: rgb(243, 230, 216);
+    --Red: rgb(235, 62, 62);
+    --Raisin-black: rgb(36, 33, 36);
+}
+
+/* CONTAINER COLOR TESTSSS */
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Beige);
+    font-family: 'Work Sans', serif;
+    color: black;
+    border-bottom: black;
+}
+
+
+
+#grid-container {
+    background-color: var(--Red);
+    border-bottom: 3px solid #000000;
+}
+
+
+#inputContainer {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 20px 0 0;
+
+}
+
+img {
+    display: inline-block;
+    justify-content: center;
+    margin: 8px;
+}
+
+h1 {
+    font-family: 'Work Sans', serif;
+    font-size: 4.5em;
+    font-weight: bold;
+
+}
+
+h2 {
+    font-family: 'Work Sans', serif;
+    font-size: 2em;
+
+}
+
+p {
+    font-family: 'Work Sans', serif;
+    font-size: 1em;
+
+}
+
+li {
+    list-style: none;
+}
+
+.thumbnail {
+    border: 4px solid var(--Beige);
+    /* border: none; */
+    margin: 5px;
+}
+
+.center-form {
+    justify-content: center;
+    display: flex;
+    /* margin: 40px 50px; */
+    padding: 30px;
+}
+
+.off-canvas {
+    background: var(--Red);
+}
+
+.off-canvas-content {
+    display: flex;
+    justify-content: center;
+}
+
+.switch {
+    position: relative;
+    /* top: 40%;
+    width: 100%; */
+    margin-left: 0px;
+    text-align: left;
+    font-size: 18px;
+
+}
+/* SCROLL STYLING  */
+.watch-list-overview {
+    height: 200px;
+    overflow: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+    opacity: 1;
+    z-index: 0;
+}
+
+.watch-list-overview-content {
+    max-width: 300px;
+    z-index: 1;
+}
+
+.watch-list-scrolling {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.movieContainer {
+    display: inline-flex;
+    justify-content: center;
+}
+.movieContainer img {
+    cursor: pointer;
+}
+
+@media print,
+screen and (min-width: 40em) {
+    .watch-list-scrolling {
+        height: 200px;
+        overflow: auto;
+    }
+}
