@@ -3,7 +3,7 @@ var searchButton = document.querySelector("#searchButton")
 
 var searchButton = document.getElementById("searchButton")
 var tmdbApiKey = "0d6d6b4bebecbfdfd42593dcd6f307e6"
-var watchmodeApiKey = "Fot0QCa6liBN8LaMkueATcC2pjuUfrCflHRo9XCP"
+var watchmodeApiKey = "BQhcySzOMPiFmtuOhfLajIp4bGpVDLjBwlCQgnIy"
 let savedItem = document.querySelectorAll(".thumbnail");
 
 var typed = document.getElementById("movieInput");
@@ -45,10 +45,6 @@ toggleSwitch.addEventListener("change", (e) => {
         buttonS.style.color = "#000000"
     }
 });
-
-//button event listener for saved searches
-document.getElementById("buttonS").addEventListener("click", displaysavedata);
-var savedSearches = document.getElementById("savedSearches");
 
 //function to find all data for both APIs
 function searchAPI(movie) {
@@ -98,20 +94,6 @@ function searchAPI(movie) {
     });
 };
 
-function displaysavedata() {
-    var historyList = document.querySelector("#movieContainer");
-    historyList.innerHTML = "";
-    searchHistory.forEach(function (movieSearched) {
-        var img = document.createElement("img");
-        img.setAttribute("name", movieSearched.movieTitle);
-        img.setAttribute("src", movieSearched.movieImg);
-        img.addEventListener("click", function (e) {
-            var movieToSearch = e.target.name
-            searchAPI(movieToSearch);
-        });
-        historyList.appendChild(img);
-    });
-}
 
 //add array to add to local storage
 function displayResults(data) {
@@ -144,6 +126,26 @@ function displayResults(data) {
         }
     }
 };
+
+
+//button event listener for saved searches
+document.getElementById("buttonS").addEventListener("click", displaysavedata);
+var savedSearches = document.getElementById("savedSearches");
+
+function displaysavedata() {
+    var historyList = document.querySelector("#movieContainer");
+    historyList.innerHTML = "";
+    searchHistory.forEach(function (movieSearched) {
+        var img = document.createElement("img");
+        img.setAttribute("name", movieSearched.movieTitle);
+        img.setAttribute("src", movieSearched.movieImg);
+        img.addEventListener("click", function (e) {
+            var movieToSearch = e.target.name
+            searchAPI(movieToSearch);
+        });
+        historyList.appendChild(img);
+    });
+}
 
 //userMovieChoice function grabs movie value entered by user
 function userMovieChoice(movie) {
