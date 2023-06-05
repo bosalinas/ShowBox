@@ -91,6 +91,7 @@ function searchAPI(movie) {
                 movieTitle: data.title,
                 movieImg: data.poster
             }
+<<<<<<< HEAD
 
         // const movieHistory = JSON.parse(localStorage.getItem('movieHistory'));
         // const movieHistoryArray = movieHistory.includes('data');
@@ -105,11 +106,30 @@ function searchAPI(movie) {
             localStorage.setItem("movieHistory", JSON.stringify(searchHistory))
             console.log(searchHistory);
             displayResults(data);
+=======
+            //this array takes down any data in locational storage and 
+            //pushes it to the array if there is no data. 
+            //if not data, makes an empty array
+            //gonna use this arary to check formated payload for a matching movie. 
+            const movieArray = JSON.parse(localStorage.getItem("movieHistory"))||[];
+            
+            var isCopy = false;
+            //loops through every title and updates the copied variable if there is a duplicate
+            for (let i = 0; i < movieArray.length; i++) {
+                if (movieArray[i].movieTitle === formattedPayload.movieTitle) {
+                    isCopy = true;
+                }
+           }
+           //if there isnt a duplicate,data is pushed to local storage
+           if (isCopy === false) {
+            searchHistory.push(formattedPayload);
+            localStorage.setItem("movieHistory", JSON.stringify(searchHistory))
+           }
+           displayResults(data);
+>>>>>>> 703257f0ab17695553897ae9bdb68cac97971604
         })
     });
 };
-
-
 
 //add array to add to local storage
 function displayResults(data) {
