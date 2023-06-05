@@ -8,7 +8,7 @@ let savedItem = document.querySelectorAll(".thumbnail");
 
 var typed = document.getElementById("movieInput");
 
-//emily
+//emily's searchHistory function
 var searchHistory = [];
 
 // TOGGLE SWITCH 
@@ -57,7 +57,6 @@ function displaysavedata() {
         var img = document.createElement("img");
         img.setAttribute("name", movieSearched.movieTitle);
         img.setAttribute("src", movieSearched.movieImg);
-        // img.setAttribute("class",)
         img.addEventListener("click", function (e) {
             var movieToSearch = e.target.name
             searchAPI(movieToSearch);
@@ -68,45 +67,29 @@ function displaysavedata() {
 
 //function to find all data for both APIs
 function searchAPI(movie) {
-    // console.log("move string: ", movie)
     //tmdb api call below  provides ID for watchmodeapi 
     var tmdbUrl = `https://api.themoviedb.org/3/search/movie?api_key=${tmdbApiKey}&query=${movie}`
     fetch(tmdbUrl).then(function (response) {
-        // console.log(response);
         return response.json();
     }).then(function (data) {
-        // console.log("tmdbapi:", data)
         var tmdbApiId = data.results[0].id;
         var tmdbTitle = data.results[0].title;
         var tmdbMovieId = "movie-" + tmdbApiId;
-        // console.log(tmdbMovieId)
         //using id from tmdbapi , we're calling the watchmode api below to provide display data
         var watchmodeApiUrl = `https://api.watchmode.com/v1/title/${tmdbMovieId}/details/?apiKey=${watchmodeApiKey}&append_to_response=sources`
         console.log(watchmodeApiUrl);
         fetch(watchmodeApiUrl).then(function (response) {
             return response.json();
         }).then(function (data) {
-            console.log("watchmodeapi:", data);
             const formattedPayload = {
                 movieTitle: data.title,
                 movieImg: data.poster
             }
-<<<<<<< HEAD
-
-        // const movieHistory = JSON.parse(localStorage.getItem('movieHistory'));
-        // const movieHistoryArray = movieHistory.includes('data');
-            
-        //     if(movieHistoryArray === true) {
-        //         searchHistory = JSON.parse(history);
-        //         console.log(history);
-        //         displaysavedata();
-        //     }
 
             searchHistory.push(formattedPayload);
             localStorage.setItem("movieHistory", JSON.stringify(searchHistory))
             console.log(searchHistory);
             displayResults(data);
-=======
             //this array takes down any data in locational storage and 
             //pushes it to the array if there is no data. 
             //if not data, makes an empty array
@@ -126,7 +109,6 @@ function searchAPI(movie) {
             localStorage.setItem("movieHistory", JSON.stringify(searchHistory))
            }
            displayResults(data);
->>>>>>> 703257f0ab17695553897ae9bdb68cac97971604
         })
     });
 };
@@ -164,26 +146,21 @@ function displayResults(data) {
     }
 };
 
-
-//grab value/movie entered by user - DONE
-
+//userMovieChoice function grabs movie value entered by user
 function userMovieChoice(movie) {
-    // console.log("movie: ", movie);
 
     var movieEntered = document.getElementById("movieInput").value;
     searchAPI(movieEntered);
 };
 
-//event listener and search button function - DONE
+//event listener and search button function 
 function searchBtn(event) {
 
     event.preventDefault();
 
-
     var movieSearched = document.getElementById("movieInput").value;
 
     if (!movieSearched) {
-        window.alert('You need a search input value!');
         return;
     }
     userMovieChoice(movieSearched);
@@ -191,32 +168,12 @@ function searchBtn(event) {
 };
 searchButton.addEventListener("click", searchBtn);
 
-// //button event listener for saved searches
-// document.getElementById("buttonS").addEventListener("click", displaysavedata);
-// var savedSearches = document.getElementById("savedSearches");
-
-// function displaysavedata() {
-//     var historyList = document.querySelector("#movieContainer");
-//     historyList.innerHTML = "";
-//     searchHistory.forEach(function (movieSearched) {
-//         var img = document.createElement("img");
-//         img.setAttribute("name", movieSearched.movieTitle);
-//         img.setAttribute("src", movieSearched.movieImg);
-//         // img.setAttribute("class",)
-//         img.addEventListener("click", function (e) {
-//             var movieToSearch = e.target.name
-//             searchAPI(movieToSearch);
-//         });
-//         historyList.appendChild(img);
-//     });
-// }
 
 // Load search history from local storage
 function loadSearchHistory() {
     var history = localStorage.getItem("movieHistory");
     if (history) {
         searchHistory = JSON.parse(history);
-        console.log(history);
         displaysavedata();
     }
     
