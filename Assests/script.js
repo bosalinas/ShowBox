@@ -50,21 +50,6 @@ toggleSwitch.addEventListener("change", (e) => {
 document.getElementById("buttonS").addEventListener("click", displaysavedata);
 var savedSearches = document.getElementById("savedSearches");
 
-function displaysavedata() {
-    var historyList = document.querySelector("#movieContainer");
-    historyList.innerHTML = "";
-    searchHistory.forEach(function (movieSearched) {
-        var img = document.createElement("img");
-        img.setAttribute("name", movieSearched.movieTitle);
-        img.setAttribute("src", movieSearched.movieImg);
-        img.addEventListener("click", function (e) {
-            var movieToSearch = e.target.name
-            searchAPI(movieToSearch);
-        });
-        historyList.appendChild(img);
-    });
-}
-
 //function to find all data for both APIs
 function searchAPI(movie) {
     //tmdb api call below  provides ID for watchmodeapi 
@@ -112,6 +97,21 @@ function searchAPI(movie) {
         })
     });
 };
+
+function displaysavedata() {
+    var historyList = document.querySelector("#movieContainer");
+    historyList.innerHTML = "";
+    searchHistory.forEach(function (movieSearched) {
+        var img = document.createElement("img");
+        img.setAttribute("name", movieSearched.movieTitle);
+        img.setAttribute("src", movieSearched.movieImg);
+        img.addEventListener("click", function (e) {
+            var movieToSearch = e.target.name
+            searchAPI(movieToSearch);
+        });
+        historyList.appendChild(img);
+    });
+}
 
 //add array to add to local storage
 function displayResults(data) {
