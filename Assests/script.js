@@ -77,7 +77,7 @@ function searchAPI(movie) {
         var tmdbMovieId = "movie-" + tmdbApiId;
         //using id from tmdbapi , we're calling the watchmode api below to provide display data
         var watchmodeApiUrl = `https://api.watchmode.com/v1/title/${tmdbMovieId}/details/?apiKey=${watchmodeApiKey}&append_to_response=sources`
-        console.log(watchmodeApiUrl);
+        
         fetch(watchmodeApiUrl).then(function (response) {
             return response.json();
         }).then(function (data) {
@@ -88,7 +88,7 @@ function searchAPI(movie) {
 
             searchHistory.push(formattedPayload);
             localStorage.setItem("movieHistory", JSON.stringify(searchHistory))
-            console.log(searchHistory);
+            
             displayResults(data);
             //this array takes down any data in locational storage and 
             //pushes it to the array if there is no data. 
@@ -134,8 +134,7 @@ function displayResults(data) {
     for (i = 0; i < data.sources.length; i++) {
         var format = data.sources[i].format;
         if (format === "HD") {
-
-            console.log(data.sources[i].name);
+            
             var stream = document.createElement("li");
             stream.innerHTML = `<a href="${data.sources[i].web_url}">${data.sources[i].name}</a>`
             whereToWatchEl.append(stream);
