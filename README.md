@@ -28,13 +28,13 @@ SO THAT I don’t have to search every individual streaming platform
     * A *toggle* was created on the top left hand corner for users to switch between light and dark mode.
 # Movie App Preview
 * **Start page**
-![Screen Grab functionality](/Assests/images/SCREEN_1.PNG) <br>
+![Screen Grab functionality](./Assests/images/SCREEN_1.PNG) <br>
 * **Movie searched**
-![Screen Grab functionality](/Assests/images/SCREEN_2.PNG) <br>
+![Screen Grab functionality](./Assests/images/SCREEN_2.PNG) <br>
 * **Saved searches**
-![Screen Grab functionality](/Assests/images/SCREEN_3.PNG) <br>
+![Screen Grab functionality](./Assests/images/SCREEN_3.PNG) <br>
 * **Dark Mode**
-![Screen Grab functionality](/Assests/images/SCREEN_4.PNG) <br>
+![Screen Grab functionality](./Assests/images/SCREEN_4.PNG) <br>
 ## Presentation
 * **[Google Presentation Link](https://docs.google.com/presentation/d/1OeQ-FP1ZzPAYXOfYClmCswkYrWYkCE5TQflgrTBxkHM/edit?usp=sharing)** <br>
 ## Credit/Owners
