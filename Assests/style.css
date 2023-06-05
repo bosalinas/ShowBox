@@ -15,7 +15,6 @@ body {
 }
 
 
-
 #grid-container {
     background-color: var(--Red);
     border-bottom: 3px solid #000000;
@@ -45,12 +44,21 @@ h1 {
 h2 {
     font-family: 'Work Sans', serif;
     font-size: 2em;
+    margin: 0px;
+
+}
+
+h3 {
+    font-family: 'Work Sans', serif;
+    font-size: 2em;
+    font-weight: 650;
 
 }
 
 p {
     font-family: 'Work Sans', serif;
-    font-size: 1em;
+    font-size: 1em; 
+    margin: 5px;
 
 }
 
@@ -68,7 +76,8 @@ li {
     justify-content: center;
     display: flex;
     /* margin: 40px 50px; */
-    padding: 30px;
+    padding: 5px;
+    margin: 20px;
 }
 
 .off-canvas {
@@ -87,12 +96,14 @@ li {
     margin-left: 0px;
     text-align: left;
     font-size: 18px;
+    margin: 0px;
 
 }
 /* SCROLL STYLING  */
 .watch-list-overview {
-    height: 200px;
-    overflow: auto;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: visible;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
