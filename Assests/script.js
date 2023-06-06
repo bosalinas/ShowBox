@@ -66,9 +66,6 @@ function searchAPI(movie) {
                 movieTitle: data.title,
                 movieImg: data.poster
             }
-
-            searchHistory.push(formattedPayload);
-            localStorage.setItem("movieHistory", JSON.stringify(searchHistory))
             
             displayResults(data);
             //this array takes down any data in locational storage and 
