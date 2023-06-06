@@ -1,5 +1,5 @@
 # YassFlix
-### **_[LINK TO DEPLOYED APPLICATION]()_**
+### **_[LINK TO DEPLOYED APPLICATION](https://bosalinas.github.io/ShowBox/)_**
 ## Motivation - User Story
 AS A user with multiple streaming services <br>
 I WANT an app that can populate all the places
