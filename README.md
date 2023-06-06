@@ -1,4 +1,4 @@
-# ShowBox
+# YassFlix
 ### **_[LINK TO DEPLOYED APPLICATION]()_**
 ## Motivation - User Story
 AS A user with multiple streaming services <br>
