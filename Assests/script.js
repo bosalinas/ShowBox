@@ -65,9 +65,7 @@ function searchAPI(movie) {
             const formattedPayload = {
                 movieTitle: data.title,
                 movieImg: data.poster
-            }
-            
-            displayResults(data);
+            };
             //this array takes down any data in locational storage and 
             //pushes it to the array if there is no data. 
             //if not data, makes an empty array
